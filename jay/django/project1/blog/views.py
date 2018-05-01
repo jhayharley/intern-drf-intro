@@ -4,24 +4,24 @@ from rest_framework import viewsets
 from .models import Anime, Breed, Website
 from .serializers import AnimeSerializer, BreedSerializer, WebsiteSerializer
 
-class AnimeViewSet(viewsets.ViewSet):
+class AnimeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = Anime.objects.all().order_by('release_date')
+    queryset = Anime.objects.all().order_by('-release_date')
     serializer_class = AnimeSerializer
 
 
-class BreedViewSet(viewsets.ViewSet):
+class BreedViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Breed.objects.all()
+    queryset = Breed.objects.all().order_by('-name')
     serializer_class = BreedSerializer
 
-class WebsiteViewSet(viewsets.ViewSet):
+class WebsiteViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Website.objects.all()
+    queryset = Website.objects.all().order_by('-name')
     serializer_class = WebsiteSerializer

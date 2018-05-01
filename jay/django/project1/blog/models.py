@@ -15,6 +15,9 @@ class Anime(models.Model):
 class Breed(models.Model):
     name           = models.CharField(max_length=120)
     description    = models.CharField(max_length=120)
+    country        = models.CharField(max_length=120)
+    is_official    = models.BooleanField(default=True)
+
 
     def __str__(self):
         return '{}'.format(self.name)
@@ -24,5 +27,6 @@ class Website(models.Model):
     link           = models.URLField(max_length=120)
     owner          = models.CharField(max_length=120)
     logo           = models.ImageField(upload_to = 'static/media')
+
     def __str__(self):
         return '{}'.format(self.name)

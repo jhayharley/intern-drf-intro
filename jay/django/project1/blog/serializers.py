@@ -10,7 +10,7 @@ class AnimeSerializer(serializers.HyperlinkedModelSerializer):
 class BreedSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Breed
-        fields = ('name', 'description', 'country', 'is_officiall')
+        fields = ('name', 'description', 'country', 'is_official')
 
 class WebsiteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
