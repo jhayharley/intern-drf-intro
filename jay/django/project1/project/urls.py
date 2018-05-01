@@ -4,7 +4,7 @@ from blog import views
 from blog.views import AnimeViewSet, BreedViewSet, WebsiteViewSet
 
 router = routers.DefaultRouter()
-router.register(r'animes', views.AnimeViewSet)
+router.register(r'animes', AnimeViewSet, base_name='animes')
 router.register(r'breeds', views.BreedViewSet)
 router.register(r'websites', views.WebsiteViewSet)
 

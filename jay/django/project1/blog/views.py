@@ -1,15 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
+from rest_framework.response import Response
 from .models import Anime, Breed, Website
 from .serializers import AnimeSerializer, BreedSerializer, WebsiteSerializer
 
-class AnimeViewSet(viewsets.ModelViewSet):
+class AnimeViewSet(viewsets.ViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = Anime.objects.all().order_by('-release_date')
-    serializer_class = AnimeSerializer
+    def list(self, request):
+      queryset = Anime.objects.all()
+      serializer = AnimeSerializer(queryset, many=True)
+      return Response(serializer.data)
 
 
 class BreedViewSet(viewsets.ModelViewSet):
